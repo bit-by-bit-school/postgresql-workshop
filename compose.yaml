@@ -1,0 +1,46 @@
+name: bitbybit
+services:
+  postgresql:
+    image: postgres:17-alpine
+    hostname: postgres
+    container_name: postgres-dev
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=bitbank
+      - POSTGRES_USER=${USER}
+    volumes:
+      - /Users/${USER}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: 'pg_isready -d bitbank -U $USER'
+      interval: 5s
+      timeout: 15s
+      retries: 5
+      start_period: 2s
+    cpu_count: 1
+    mem_limit: '1G'
+    ports:
+      - '5432:5432'
+
+  server:
+    image: node:22.15.0-alpine
+    container_name: backend-dev
+    hostname: server
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: 'npm run dev'
+    ports:
+      - '3001:3000'
+    depends_on:
+      postgresql:
+        condition: service_healthy
+
+  # job-runner:
+  #   profiles: [data]
+  #   build:
+  #     dockerfile: Dockerfile.jobrunner
+  #   container_name: job-runner
+  #   develop:
+  #     watch:
+  #       - path: src/data
+  #         action: rebuild
