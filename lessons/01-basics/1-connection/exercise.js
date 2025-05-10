@@ -9,7 +9,6 @@ export async function testConnection(pool) {
     );
     return response[0]['active'];
   } catch (e) {
-    console.error(e);
     return 0;
   }
 }
