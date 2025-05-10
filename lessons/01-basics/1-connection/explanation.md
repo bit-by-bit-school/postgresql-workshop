@@ -1,0 +1,1 @@
+The select statement in SQL can be used to select data directly from expressions, even without referencing any tables. A SQL expression is any combination of values, operators and SQL functions that together evaluate to a value.
