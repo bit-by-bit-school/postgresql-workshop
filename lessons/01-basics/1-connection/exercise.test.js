@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { instantiatePool } from '../../utils/db.js';
-import { testConnection } from './1-connection.js';
+import { instantiatePool } from '../../../utils/db.js';
+import { testConnection } from './exercise.js';
 
 describe('Database connection', { concurrency: true }, () => {
   it('should return 1 if database connection is established', async () => {

@@ -44,3 +44,6 @@ src/public/**/
 # db dumps
 *.dump
 backups/
+
+# Exercise solutions
+solution.sql

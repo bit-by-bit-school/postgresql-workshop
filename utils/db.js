@@ -28,4 +28,4 @@ export async function queryFromFile(sqlFilePath, pool = standardPool) {
   return query(fileQuery, pool);
 }
 
-await queryFromFile('./seed.sql');
+await queryFromFile(`${process.cwd()}/schema.sql`);

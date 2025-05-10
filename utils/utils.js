@@ -1,3 +1,3 @@
-export function getCorrespondingSqlFilePath(filePath) {
-  return filePath.replace(/js$/, 'sql');
+export function getCorrespondingSqlFilePath(dirPath) {
+  return dirPath + '/exercise.sql';
 }
