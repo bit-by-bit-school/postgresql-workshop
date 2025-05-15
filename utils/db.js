@@ -26,9 +26,9 @@ export async function query(sqlQuery, pool = standardPool) {
   }
 }
 
-export async function queryFromFile(sqlFilePath) {
+export async function queryFromFile(sqlFilePath, pool = standardPool) {
   const fileQuery = await fs.readFile(sqlFilePath, { encoding: 'utf-8' });
-  return query(fileQuery);
+  return query(fileQuery, pool);
 }
 
 export function queryAsStream(client, queryText) {
