@@ -19,7 +19,7 @@ services:
     cpu_count: 1
     mem_limit: '1G'
     ports:
-      - '5432:5432'
+      - '5431:5432'
 
   tester:
     image: node:22.15.0-alpine
